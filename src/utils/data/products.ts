@@ -1,6 +1,6 @@
 const MENU = [
   {
-    title: "Lanche do dia",
+    title: "50% OFF",
     data: [
       {
         id: "1",
@@ -24,7 +24,7 @@ const MENU = [
     ],
   },
   {
-    title: "Promoções",
+    title: "Promos",
     data: [
       {
         id: "2",
@@ -86,7 +86,7 @@ const MENU = [
     ],
   },
   {
-    title: "Sobremesa",
+    title: "Dessert",
     data: [
       {
         id: "5",
@@ -115,7 +115,7 @@ const MENU = [
     ],
   },
   {
-    title: "Bebidas",
+    title: "Drinks",
     data: [
       {
         id: "7",
