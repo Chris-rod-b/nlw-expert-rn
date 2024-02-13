@@ -1,13 +1,14 @@
 import { useRef, useState } from "react";
 import { View, FlatList, SectionList, Text } from 'react-native';
+import { Link } from "expo-router";
 
 import { CATEGORIES, MENU } from "@/utils/data/products";
 
 import { Header } from "@/components/header";
-import { CategoryButton } from "@/components/category-button";
 import { Product } from "@/components/product";
+import { CategoryButton } from "@/components/category-button";
 
-export default function Home(){
+export default function Home() {
   const [category, setCategory] = useState(CATEGORIES[0])
 
   const sectionListRef = useRef<SectionList>(null)
@@ -32,7 +33,12 @@ export default function Home(){
       <FlatList
         data={CATEGORIES}
         keyExtractor={(item) => item}
-        renderItem={({ item }) => <CategoryButton title={item} isSelected={item === category} onPress={() => handleCategorySelect(item)}/>}
+        renderItem={({ item }) => 
+          <CategoryButton 
+            title={item} 
+            isSelected={item === category} 
+            onPress={() => handleCategorySelect(item)}
+          />}
         horizontal
         className="max-h-10 mt-5"
         showsHorizontalScrollIndicator={false}
@@ -45,7 +51,9 @@ export default function Home(){
         keyExtractor={(item) => item.id}
         stickySectionHeadersEnabled={false}
         renderItem={({ item }) => (
-          <Product data={item}/>
+          <Link href={`./product/${item.id}`} asChild>
+            <Product data={item} />
+          </Link>
         )}
         renderSectionHeader={({section: {title}}) => (
           <Text className="text-xl text-white front-heading mt-8 mb-3">
