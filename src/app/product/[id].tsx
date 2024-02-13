@@ -1,14 +1,22 @@
 import { Button } from "@/src/components/button";
 import { LinkButton } from "@/src/components/link-button";
+import { useCartStore } from "@/src/stores/cart-store";
 import { PRODUCTS } from "@/src/utils/data/products";
 import { formatCurrency } from "@/src/utils/functions/format-currency";
 import { Feather } from "@expo/vector-icons";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useNavigation } from "expo-router";
 import { Image, Text, View } from "react-native";
 
 export default function Product() {
+  const cartStore = useCartStore();
+  const navigation = useNavigation();
   const { id } = useLocalSearchParams();
-  const product = PRODUCTS.filter((item) => item.id === id)[0]
+  const product = PRODUCTS.filter((item) => item.id === id)[0];
+
+  function handleAddCart() {
+    cartStore.add(product);
+    navigation.goBack();
+  }
 
   return (
     <View className="flex-1">
@@ -32,13 +40,11 @@ export default function Product() {
       </View>
 
       <View className="p-5 pb-8 gap-5"> 
-        <Button>
+        <Button onPress={handleAddCart}>
           <Button.Icon>
             <Feather name="plus-circle" size={20}/>
           </Button.Icon>
-          <Button.Text>
-            Adicionar ao pedido
-          </Button.Text>
+          <Button.Text>Adicionar ao pedido</Button.Text>
         </Button>
 
         <LinkButton title="Back to menu" href="/" />
