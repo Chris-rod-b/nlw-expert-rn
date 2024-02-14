@@ -5,7 +5,7 @@ const MENU = [
       {
         id: "1",
         title: "X-React",
-        price: 24.9,
+        price: 14.9,
         description:
           "Um hamburger tão bonito que me deu fome enquanto eu fazia esse layout para o projeto...",
         cover: require("../../assets/products/cover/1.png"),
@@ -24,7 +24,7 @@ const MENU = [
     ],
   },
   {
-    title: "Promos",
+    title: "Promotions",
     data: [
       {
         id: "2",
